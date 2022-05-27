@@ -31,10 +31,14 @@ class ProfilePage(View):
     def post(self, request):
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
 
         if first_name and last_name:
             request.user.first_name = first_name
             request.user.last_name = last_name
+            request.user.profile.location = address
+            request.user.profile.phone = phone
             request.user.save()
 
         return render(request, self.template_name)

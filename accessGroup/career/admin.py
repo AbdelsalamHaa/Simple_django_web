@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import CarrerUsers
+from .models import Profile
 
 # Register your models here.
 
-admin.site.register(CarrerUsers)
+admin.site.register(Profile)
