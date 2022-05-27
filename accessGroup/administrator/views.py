@@ -77,22 +77,28 @@ class EditAccount(View):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
+        user = User.objects.get(id=user_id)
 
-        if first_name and last_name and username and email:
-            user = User.objects.get(id=user_id)
-            # This is how to delete a user (or any object)
-            # user.delete()
-            user.first_name = first_name
-            user.last_name = last_name
-            user.username = username
-            user.email = email
-            if password:
-                user.set_password(password)
+        if request.POST.get("save_user"):
+            if first_name and last_name and username and email:
+                user.first_name = first_name
+                user.last_name = last_name
+                user.username = username
+                user.email = email
+                if password:
+                    user.set_password(password)
+                    user.save()
+                    if user.is_superuser :
+                        return redirect('login')
                 user.save()
-                if user.is_superuser :
-                    return redirect('login')
-            user.save()
+            else:
+                return render(request, self.template_name)
 
-            return redirect('accounts_list')
-        else:
-            return render(request, self.template_name)
+        elif request.POST.get("remove_user"):
+            if not user.is_superuser:
+                # This is how to delete a user (or any object)
+                user.delete()
+            else:
+                return HttpResponse('You Can not remove the admin user', status=401)
+
+        return redirect('accounts_list')
