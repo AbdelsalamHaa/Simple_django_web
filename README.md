@@ -11,7 +11,7 @@ The following pages are created
 
 4- account_list page for admin to view 
 
-5- edit profile by admin 
+5- edit profile by admin (You need to click on the image beside the name in the list to edit that person information)
 
 
 ## Getting started
