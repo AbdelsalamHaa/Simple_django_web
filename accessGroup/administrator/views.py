@@ -41,9 +41,18 @@ class AddAccount(View):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
 
         if first_name and last_name and username and email and password:
-            user = User(first_name=first_name, last_name=last_name, username=username, email=email)
+            user = User.objects.create()
+            user.first_name = first_name
+            user.last_name = last_name
+            user.email = email
+            user.username = username
+            user.profile.location = address
+            user.profile.phone = phone
+            # user = User(first_name=first_name, last_name=last_name, username=username, email=email)
             user.save()
             user.set_password(password)
             user.save()
@@ -77,7 +86,10 @@ class EditAccount(View):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
+        address = request.POST.get("address")
+        phone = request.POST.get('phone')
         user = User.objects.get(id=user_id)
+
 
         if request.POST.get("save_user"):
             if first_name and last_name and username and email:
@@ -85,6 +97,8 @@ class EditAccount(View):
                 user.last_name = last_name
                 user.username = username
                 user.email = email
+                user.profile.location = address
+                user.profile.phone = phone
                 if password:
                     user.set_password(password)
                     user.save()
