@@ -33,12 +33,15 @@ class ProfilePage(View):
         last_name = request.POST.get('last_name')
         address = request.POST.get('address')
         phone = request.POST.get('phone')
+        birth_date = request.POST.get("birth_date")
 
         if first_name and last_name:
             request.user.first_name = first_name
             request.user.last_name = last_name
             request.user.profile.location = address
             request.user.profile.phone = phone
+            if birth_date!="":
+                request.user.profile.birth_date = birth_date
             request.user.save()
 
         return render(request, self.template_name)

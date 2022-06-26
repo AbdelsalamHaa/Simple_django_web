@@ -32,7 +32,7 @@
                         <td class="text-center">
                             <a href="{% url 'edit_account' %}?id={{user.id}}">
                                 <img class="pic"
-                                    src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                                    src="{{user.profile.profile_image.url}}"
                                     alt="">
                             </a>
                         </td>
