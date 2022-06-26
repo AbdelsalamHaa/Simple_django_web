@@ -7,13 +7,11 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-
-
 def home(request):
     return render(request,"index.html")
 
-def login(request):
-    return render(request,'login.html')
+# def login(request):
+#     return render(request,'login.html')
 
 # This is a function-based view of profile page
 def profile_page(request):
@@ -29,6 +27,8 @@ class ProfilePage(View):
         return render(request, self.template_name)
 
     def post(self, request):
+        # if request.user.is_superuser:
+
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         address = request.POST.get('address')
