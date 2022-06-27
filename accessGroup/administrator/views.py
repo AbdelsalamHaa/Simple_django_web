@@ -28,13 +28,13 @@ class AddAccount(View):
 
     def get(self, request):
         if not request.user.is_superuser:
-            return HttpResponse('You do not have access to this page', status=401)
+            return HttpResponse('You do not have access to this page', status=403)
 
         return render(request, self.template_name)
 
     def post(self, request):
         if not request.user.is_superuser:
-            return HttpResponse('You do not have access to this page', status=401)
+            return HttpResponse('You do not have access to this page', status=403)
 
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
@@ -68,7 +68,7 @@ class EditAccount(View):
 
     def get(self, request):
         if not request.user.is_superuser:
-            return HttpResponse('You do not have access to this page', status=401)
+            return HttpResponse('You do not have access to this page', status=403)
 
         user_id = request.GET.get('id')
         try:
