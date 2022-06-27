@@ -10,8 +10,8 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request,"index.html")
 
-# def login(request):
-#     return render(request,'login.html')
+def login(request):
+    return render(request,'base.html')
 
 # This is a function-based view of profile page
 def profile_page(request):
