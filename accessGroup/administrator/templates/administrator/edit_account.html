@@ -16,7 +16,8 @@
             <div class="row">
                 <div class="col-md-3 border-right" id = "fileInput">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{user.profile.profile_image.url}}"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
-                    <input type="file" name = "profile_path" class="btn btn-primary profile-button"/>
+                    <input type="file" name = "profile_path" id = "files" style="display:none;"/>
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><label class="btn btn-primary profile-button" for="files">Select Profile Image</label></div>
                 </div>
                 <div class="col-md-9 border-right">
                     <div class="p-3 py-5">
@@ -34,7 +35,7 @@
                                 <div class="col-md-12"><label class="labels">Password</label><input type="password" class="form-control" placeholder="password" value="" name="password"></div>
                                 <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="Address" value="{{user.profile.location}}" name="address"></div>
                                 <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="+6011122223333" value="{{user.profile.phone}}" name = "phone"></div>
-                                <div class="col-md-12"><label class="labels">Birth Date</label><input type="date" class="form-control"  placeholder="yyyy-mm-dd" value="{{user.profile.birth_date|date:'Y-m-d'}}" name = "birth_date"></div>
+                                <div class="col-md-12"><label class="labels">Birth Date</label><input type="date" class="form-control"  placeholder="yyyy-mm-dd" value="{{user.profile.birth_date|date:'Y-m-d'}}" name = "birth_date"  required="required"></div>
 
                             </div>
                             <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" name = save_user  value="Save&List">Save</button></div>
