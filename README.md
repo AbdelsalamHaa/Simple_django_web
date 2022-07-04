@@ -1,4 +1,4 @@
-# The Access Group Assessment
+# Simple Django web
 
 A website is created using Django Frame work. 
 The following pages are created
